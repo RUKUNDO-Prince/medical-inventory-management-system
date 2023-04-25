@@ -64,7 +64,7 @@ body{
     display: block;
     background: #17c0eb;
     width: 50px;
-    height: 100px;
+    /* height: 100px; */
     position: absolute;
     bottom: 0;
     margin-left: 25px;
