@@ -6,9 +6,11 @@
 </head>
 <body>
     {% extends 'medical_inventory/base.html' %}
+    {% load crispy_forms_tags %}
+
     {% block content %}
     <div class="row">
-        <div class="col-11 col-md-4 mx-auto mt-5">
+        <div class="col-11 col-md-4 mx-auto mt-4">
             <h1>Sign Up</h1>
             {% if form.errors %}
                 {% for field in form %}
@@ -26,7 +28,7 @@
             {% endif %}
             <form method="post">
                 {% csrf_token %}
-                {{ form }}
+                {{ form|crispy }}
 
                 <button class="btn btn-primary" type="submit">Sign Up</button>
             </form>
