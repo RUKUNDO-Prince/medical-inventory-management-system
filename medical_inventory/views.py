@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
-from medical_inventory_management_system.medical_inventory.forms import UserRegisterForm
+from .forms import UserRegisterForm
+
 
 class Index(TemplateView):
     template_name = 'medical_inventory/index.html'
