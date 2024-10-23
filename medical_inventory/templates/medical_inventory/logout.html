@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% extends 'medical_inventory/base.html' %}
+
+  {% block content %}
+    <div class="row">
+      <div class="col-11 col-md-4 mx-auto mt-5">
+        <h2>You Have Been Logged Out</h2>
+        <div class="border-top pt-3">
+          <small class="text-muted"><a href="{% url 'login' %}">Login Again!</a></small>
+        </div>
+      </div>
+    </div>
+  {% endblock content %}
+</body>
+</html>
