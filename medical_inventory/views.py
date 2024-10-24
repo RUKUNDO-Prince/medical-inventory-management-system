@@ -2,14 +2,15 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
 from .forms import UserRegisterForm
-
+from .models import InventoryItem
 
 class Index(TemplateView):
     template_name = 'medical_inventory/index.html'
 
 class Dashboard(View):
     def get(self, request):
-        return render(request, 'medical_inventory/dashboard.html')
+        items = InventoryItem.objects.filter(user=self.request.user.id).order_by('id')
+        return render(request, 'medical_inventory/dashboard.html', {'items': items})
 
 class SignUpView(View):
     def get(self, request):

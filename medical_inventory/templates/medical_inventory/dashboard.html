@@ -20,19 +20,31 @@
                     <th scope="col">Name</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Category</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">ID</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
+                {% if items|length == 0 %}
                 <tr>
                     <th scope="col">-</th>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
                     <td>-</td>
-                    <td>-</td>
+                    <td></td>
                 </tr>
+                {% endif %}
+                {% for item in items %}
+                <tr>
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.category.name }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
               </tbody>
           </table>
       </div>
