@@ -57,11 +57,13 @@ class AddItem(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['action'] = "Add" if self.__class__.__name__ == "AddItem" else "Update"
         context['categories'] = Category.objects.all()
         return context
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, "Item added successfully!")
         return super().form_valid(form)
 
 class EditItem(LoginRequiredMixin, UpdateView):
@@ -70,8 +72,21 @@ class EditItem(LoginRequiredMixin, UpdateView):
     template_name = 'medical_inventory/item_form.html'
     success_url = reverse_lazy('dashboard')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = "Add" if self.__class__.__name__ == "AddItem" else "Update"
+        return context
+
+    def form_valid(self, form):
+        messages.success(self.request, "Item updated successfully!")
+        return super().form_valid(form)
+
 class DeleteItem(LoginRequiredMixin, DeleteView):
     model = InventoryItem
     template_name = 'medical_inventory/delete_item.html'
     success_url = reverse_lazy('dashboard')
     context_object_name = 'item'
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, "Item deleted successfully!")
+        return super().delete(request, *args, **kwargs)
