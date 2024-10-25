@@ -42,7 +42,7 @@
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.category.name }}</td>
                     <td><a href="{% url 'edit-item' item.id %}" class="btn btn-outline-secondary">Edit</a></td>
-                    <td></td>
+                    <td><a href="{% url 'delete-item' item.id %}" class="btn btn-secondary">Delete</a></td>
                 </tr>
                 {% endfor %}
               </tbody>
